@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/widgets/card_swiper_widget.dart';
+import 'package:peliculas/src/widgets/card_swiper_widget.dart';
 
 class Homepage extends StatelessWidget {
   

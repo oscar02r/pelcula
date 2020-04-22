@@ -2,7 +2,9 @@ class Peliculas {
 
   List<Pelicula> items = new List();
   
-  Peliculas.fromJsonList( List<dynamic> jsonList ) {
+  Peliculas();
+
+  Peliculas.fromJsonList( List< dynamic> jsonList ) {
 
        if(jsonList == null) return;
 
@@ -64,6 +66,15 @@ Pelicula.fromJsonMap ( Map<String , dynamic> json){
     voteAverage      = json['vote_average'] / 1;
     overview         = json['overview'];
     releaseDate      = json['release_date'];
+}
+
+ String getPosterImg(){
+      if (posterPath == null) {
+         return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYYmudARVouxYOn9saUoGpQjD6Ga-XBuQj5JpXbgv4sNRxBvj9&usqp=CAU';
+      }else{
+
+         return 'https://image.tmdb.org/t/p/w500/$posterPath';
+      }
 }
 
 }

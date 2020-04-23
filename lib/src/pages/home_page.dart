@@ -20,8 +20,10 @@ class Homepage extends StatelessWidget {
       ],
       ),
       body:Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           _swiperTarjetas(),
+          _footer(context)
         ],
       )
     );
@@ -52,5 +54,24 @@ class Homepage extends StatelessWidget {
          
   }
 
-  
+ Widget _footer(BuildContext context) {
+
+        return Container(
+          width: double.infinity,
+          child:Column(
+            children: <Widget>[
+              Text('Populares', style:Theme.of(context).textTheme.subhead),
+
+              FutureBuilder(
+                future: peliculasProvider.getPolular(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  //snapshot.data?.forEach( (p) => print(p.title) );
+                  return Text('sata');
+                },
+              ),
+            ],
+          )
+        );
+ }
+
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:peliculas/src/widgets/card_swiper_widget.dart';
 import 'package:peliculas/src/providers/peliculas_provider.dart';
+import 'package:peliculas/src/widgets/card_swiper_widget.dart';
 import 'package:peliculas/src/widgets/movie_horizontal.dart';
 
 class Homepage extends StatelessWidget {
@@ -10,7 +10,7 @@ class Homepage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-     
+    peliculasProvider.getPolular();
     return Scaffold(
       appBar: AppBar(title: Text('Home page'),
       backgroundColor: Colors.indigoAccent,
@@ -67,13 +67,17 @@ class Homepage extends StatelessWidget {
                 child: Text('Populares', style:Theme.of(context).textTheme.subhead)
               ),
               SizedBox(height: 5.0,),
-              FutureBuilder(
-                future: peliculasProvider.getPolular(),
+
+              StreamBuilder(
+                stream: peliculasProvider.populdaresStream,
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   //snapshot.data?.forEach( (p) => print(p.title) );
                    if (snapshot.hasData) {
                      
-                      return MovieHorizontal(peliculas: snapshot.data);
+                      return MovieHorizontal(
+                        peliculas: snapshot.data, 
+                        siguientePagina: peliculasProvider.getPolular
+                        );
                       
                    } else {
 

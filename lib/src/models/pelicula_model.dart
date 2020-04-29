@@ -77,5 +77,14 @@ Pelicula.fromJsonMap ( Map<String , dynamic> json){
       }
 }
 
+String getBackgroundImg(){
+      if (posterPath == null) {
+         return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYYmudARVouxYOn9saUoGpQjD6Ga-XBuQj5JpXbgv4sNRxBvj9&usqp=CAU';
+      }else{
+
+         return 'https://image.tmdb.org/t/p/w500/$backdropPath';
+      }
+}
+
 }
 

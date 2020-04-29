@@ -69,7 +69,7 @@ class PeliculasProvider{
 
      final url = Uri.https( _url,'3/movie/$peliId/credits', {
              'api_key'  : _apikey,
-             'lenguage' : _language
+             'language' : _language
      });
 
     final resp = await http.get(url);

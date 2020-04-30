@@ -39,15 +39,19 @@ class PeliculaDetalle extends StatelessWidget {
           pelicula.title,
           style: TextStyle(color: Colors.white, fontSize: 16.0),
         ),
-        background: FadeInImage(
-          placeholder: AssetImage('assets/img/loading.gif'),
-          image: NetworkImage(pelicula.getBackgroundImg()),
-          fit: BoxFit.cover,
-          fadeInDuration: Duration(milliseconds: 150),
+        background: Hero(
+          tag: pelicula.uniqueId,
+                  child: FadeInImage(
+            placeholder: AssetImage('assets/img/loading.gif'),
+            image: NetworkImage(pelicula.getBackgroundImg()),
+            fit: BoxFit.cover,
+            fadeInDuration: Duration(milliseconds: 150),
+          ),
         ),
       ),
     );
   }
+
 
   Widget _posterTitulo(BuildContext context, Pelicula pelicula) {
     return Container(
